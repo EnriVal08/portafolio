@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>My Journey Learning to Code</title>
+  
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-logo">
+                <img src="/images-principal/logo.PNG" alt="Logo" style="height:40px;">
+            </div>
+            <ul class="navbar-links">
+                <li><a href="#intro">Intro</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="section-intro">
+        <div class="intro" id="intro">
+            <div class="intro-content">
+                <h1>
+                    <span class="line intro-line1">Aprendiendo.</span><br>
+                    <span class="line intro-line2">Creando.</span><br>
+                    <span class="line intro-line3">Evolucionando.</span>
+                </h1>
+            </div>
+            <p>Este es mi espacio para mostrar mi progreso en desarrollo web.</p>
+        </div>
+ 
+    </section>
+    <section class="section-container">
+    <div class="container" id="proyectos">
+        <a href="survey-form/index.html" class="card">
+            <img src="/images-principal/miniatura-encuesta.png" alt="Proyecto 1">
+            <h3>Survey Form</h3>
+            <p>Encuesta Funcional con HTML y Css</p>
+        </a>
+        <a href="tribute-page/index.html" class="card">
+            <img src="/images-principal/miniatura-turing.PNG" alt="Proyecto 2">
+            <h3>Tribute Page</h3>
+            <p>Pagina de homenaje para Alan Turing</p>
+        </a>
+        <a href="documentation-page/index.html" class="card">
+            <img src="/images-principal/miniatura-tecnica.PNG" alt="Proyecto 3">
+            <h3>Technical Documentation Page</h3>
+            <p>Pagina de Documentacion Tecnica en referencia a Api</p>
+        </a>
+        <a href="landing-page/index.html" class="card">
+            <img src="/images-principal/miniatura-landing.PNG" alt="Proyecto 4">
+            <h3>Landing Page</h3>
+            <p>Pagina de Inicio de producto para comercializar</p>
+        </a>
+        </div>
+    </section>
+    <section class="section-contacto">
+    <div class="contacto" id="contacto">
+        <h2>Contacto / Get in touch</h2>
+        <p>¿Tienes alguna pregunta o propuesta? ¡No dudes en contactarme!</p>
+        <div class="contact-cards">
+            <div class="contact-card">
+                <span style="font-size:2rem;"><i data-feather="mail" class="contact-icon"></i></span>
+                <p>Email</p>
+                <a href="mailto:tuemail@ejemplo.com">enriquevalverde45@gmail.com</a>
+            </div>
+            <div class="contact-card">
+                <span style="font-size:2rem;"><i data-feather="linkedin" class="contact-icon"></i></span>
+                <p>LinkedIn</p>
+                <a href="https://linkedin.com/in/tuusuario" target="_blank">EnriiqueeVal</a>
+            </div>
+            <div class="contact-card">
+                <span style="font-size:2rem;"><i data-feather="github" class="contact-icon"></i></span>
+                <p>GitHub</p>
+                <a href="https://github.com/EnriVal08" target="_blank">EnriVal08</a>
+            </div>
+        </div>
+        <form>
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+            <!-- Honeypot anti-spam -->
+            <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+            <button type="submit" class="submit-form">Enviar</button>
+        </form>
+        </div>
+    </section>
+       <script src="https://unpkg.com/feather-icons"></script>
+    
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

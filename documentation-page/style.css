@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variables */
+:root{
+  --nav-width: 260px;
+  --nav-bg: #0b2545;
+  --nav-text: #ffffff;
+  --content-bg: #f6f8fb;
+  --accent: #1f6feb;
+  --max-width: 1000px;
+  --gutter: 24px;
+}
+
+/* Navbar fijo a la izquierda (siempre en el borde izquierdo) */
+#navbar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--nav-width);
+  background: linear-gradient(180deg, var(--nav-bg), #0a1b36);
+  color: var(--nav-text);
+  padding: 24px 16px;
+  overflow-y: auto;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  border-right: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Header dentro del navbar: debe estar antes que los enlaces */
+#navbar > header {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* Links de la navegación */
+#navbar .nav-link{
+  display: block;
+  text-decoration: none;
+  color: var(--nav-text);
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin: 6px 0;
+  font-size: 0.95rem;
+}
+#navbar .nav-link:hover{
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+}
+
+/* Contenido principal: margen izquierdo para dejar espacio al navbar */
+#main-doc{
+  margin-left: var(--nav-width);
+  padding: 40px;
+  background: var(--content-bg);
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/* Contenedor general para centrar contenido */
+#main-doc > section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 18px 0;
+  box-shadow: 0 6px 18px rgba(11, 37, 69, 0.06);
+}
+
+/* header dentro de cada section debe ser visible y no vacío */
+.main-section > header{
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* Estilos para párrafos, listas y bloques de código */
+.main-section p{
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 0.98rem;
+}
+.main-section ul, .main-section ol {
+  margin: 8px 0 12px 20px;
+}
+.main-section li {
+  margin-bottom: 6px;
+}
+
+/* Código inline */
+.main-section code {
+  background: rgba(27,31,35,0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 0.95rem;
+}
+
+/* Bloques de código */
+pre {
+  background: #0f1724;
+  color: #e6eef6;
+  padding: 12px;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* Media query (requisito): en pantallas pequeñas se ajusta la tipografía y padding */
+@media (max-width: 700px) {
+  :root { --nav-width: 220px; }
+  #navbar {
+    position: fixed;
+    width: var(--nav-width);
+    font-size: 0.95rem;
+    padding: 18px 12px;
+  }
+  #main-doc {
+    margin-left: var(--nav-width);
+    padding: 20px;
+  }
+}
+
+/* Otra media query para mejorar lectura en pantallas grandes */
+@media (min-width: 1200px) {
+  #main-doc {
+    padding-left: 48px;
+    padding-right: 48px;
+    max-width: var(--max-width);
+    margin-left: var(--nav-width);
+    margin-right: auto;
+  }
+}

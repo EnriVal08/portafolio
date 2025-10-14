@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./style.css">
+    
+  </head>
+
+
+  <body>
+    <h1 id="title">Encuesta</h1>
+    <p id="description">Esta es un pequeño formulario para freeCodeCamp</p>
+
+    <form id="survey-form">
+      <label for="name" id="name-label"> Nombre
+        <input required id="name" type="text" placeholder="Introduce tu nombre">
+      </label>
+
+      <label for="email" id="email-label"> Email
+        <input required id="email" type="email" placeholder="Introduce tu email">
+      </label>
+
+      <label for="age" id="number-label" > Edad
+        <input placeholder="Su edad" required id="number" type="number" min="13" max="120">
+      </label>
+
+      <label for="recomendacion" id="recomendacion" > Nos recomendarias a amigos o familiares?
+        <input value="si" name="recomendacion" type="radio" checked> Si
+        <input value="no" name="recomendacion" type="radio"> No
+      </label>
+
+      <p>Selecciona un valor</p>
+      <select id="dropdown">
+        <option value="1">Valor 1</option>
+        <option value="1">Valor 2</option>
+        <option value="1">Valor 3</option>
+      </select>
+
+
+<label>
+  A que se dedica:
+  <input value="estudio" type="checkbox"> Estudio
+  <input value="trabajo" type="checkbox"> Trabajo
+  </label>
+
+      <p>Deje su mensaje</p>
+      <textarea id="mensaje" rows="3" cols="30" placeholder="Indiquenos como mejorar en el diseño..."></textarea>
+
+<input id="submit" type="submit">
+    </form>
+
+
+
+
+  </body>
+</html>

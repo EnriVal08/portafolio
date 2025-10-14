@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Documentación Técnica - Proyecto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Barra de navegación -->
+  <nav id="navbar" aria-label="Barra de navegación de la documentación">
+    <header>Documentación Técnica</header>
+
+    <!-- enlaces de navegación: deben coincidir con los headers de las secciones -->
+    <a class="nav-link" href="#Introducción">Introducción</a>
+    <a class="nav-link" href="#Guía_de_Instalación">Guía de Instalación</a>
+    <a class="nav-link" href="#API_Reference">API Reference</a>
+    <a class="nav-link" href="#Ejemplos">Ejemplos</a>
+    <a class="nav-link" href="#Preguntas_Frecuentes">Preguntas Frecuentes</a>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main id="main-doc">
+    <!-- Sección 1 -->
+    <section class="main-section" id="Introducción">
+      <header>Introducción</header>
+      <p>Esta documentación explica el uso y las convenciones del proyecto.</p>
+      <p>Está pensada para desarrolladores que quieren integrar o extender la aplicación.</p>
+      <p>En las siguientes secciones encontrarás instalación, API y ejemplos prácticos.</p>
+      <ul>
+        <li>Objetivo del proyecto</li>
+        <li>Convenciones de nomenclatura</li>
+      </ul>
+      <pre><code>npm install mi-paquete</code></pre>
+    </section>
+
+    <!-- Sección 2 -->
+    <section class="main-section" id="Guía_de_Instalación">
+      <header>Guía de Instalación</header>
+      <p>Requisitos previos: Node.js, npm o yarn.</p>
+      <p>Clona el repositorio y ejecuta los comandos de instalación.</p>
+      <p>Configura las variables de entorno necesarias antes de arrancar.</p>
+      <ol>
+        <li>Clonar el repo</li>
+        <li>Instalar dependencias</li>
+        <li>Levantar el servidor</li>
+      </ol>
+      <code>git clone https://ejemplo/mi-repo.git</code>
+      <code>npm run start</code>
+    </section>
+
+    <!-- Sección 3 -->
+    <section class="main-section" id="API_Reference">
+      <header>API Reference</header>
+      <p>Esta sección describe los endpoints principales y ejemplos de uso.</p>
+      <p>Cada endpoint tiene su método HTTP y parámetros listados.</p>
+      <p>Los códigos de respuesta comunes son 200, 400 y 500.</p>
+      <ul>
+        <li>GET /items — devuelve lista de ítems</li>
+        <li>POST /items — crea un nuevo ítem</li>
+      </ul>
+
+      <pre><code>GET /api/v1/items?page=1&amp;limit=20</code></pre>
+      <pre><code>POST /api/v1/items
+Content-Type: application/json
+
+{ "name": "Mi ítem" }</code></pre>
+    </section>
+
+    <!-- Sección 4 -->
+    <section class="main-section" id="Ejemplos">
+      <header>Ejemplos</header>
+      <p>Aquí hay ejemplos rápidos para usar la API y las utilidades del SDK.</p>
+      <p>Ejemplo de cliente en JavaScript usando fetch:</p>
+      <pre><code>fetch('/api/v1/items')
+  .then(r =&gt; r.json())
+  .then(data =&gt; console.log(data))</code></pre>
+
+      <p>Ejemplo de uso del módulo en Node:</p>
+      <code>const sdk = require('mi-sdk')</code>
+      <ul>
+        <li>Ejemplo de autenticación</li>
+        <li>Ejemplo de paginación</li>
+      </ul>
+    </section>
+
+    <!-- Sección 5 -->
+    <section class="main-section" id="Preguntas_Frecuentes">
+      <header>Preguntas Frecuentes</header>
+      <p>¿Cómo reporto un bug? — Abre un issue en el repositorio con pasos para reproducir.</p>
+      <p>¿Dónde está la documentación de la versión antigua? — En la carpeta /docs/legacy.</p>
+      <p>¿Puedo contribuir? — Sí, lee el CONTRIBUTING.md antes de enviar PRs.</p>
+
+      <ul>
+        <li>Política de releases</li>
+        <li>Soporte y SLA</li>
+        <li>Licencia</li>
+      </ul>
+
+      <code>npm run test</code>
+    </section>
+  </main>
+</body>
+</html>

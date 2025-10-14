@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Switch: Aventura Épica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header con logo y barra de navegación -->
+    <header id="header">
+        <!-- Logo del juego -->
+        <img id="header-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Nintendo_Switch_Logo.svg/500px-Nintendo_Switch_Logo.svg.png" 
+ alt="Logo Juego">
+        
+        <!-- Barra de navegación -->
+        <nav id="nav-bar">
+            <a class="nav-link" href="#section1">Inicio</a>
+            <a class="nav-link" href="#section2">Trailer</a>
+            <a class="nav-link" href="#section3">Suscribirse</a>
+        </nav>
+    </header>
+
+    <!-- Sección 1: Presentación del juego -->
+    <section id="section1" class="hero">
+        <h1>¡Bienvenido a Aventura Épica!</h1>
+        <p>Explora mundos increíbles y vive la experiencia definitiva en Nintendo Switch.</p>
+        <button class="cta-button">Descubre Más</button>
+    </section>
+
+    <!-- Sección 2: Video del juego -->
+    <section id="section2">
+        <h2>Trailer Oficial</h2>
+        <iframe id="video" src="https://www.youtube.com/embed/KIOT2oZro-4" title="Trailer del Juego" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <!-- Sección 3: Formulario de suscripción -->
+    <section id="section3">
+        <h2>Suscríbete para novedades</h2>
+        <form id="form" action="https://www.freecodecamp.com/email-submit" method="POST">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="Ingresa tu email" required>
+            <input type="submit" id="submit" value="Enviar">
+        </form>
+    </section>
+    <!-- Sección 4: Juegos destacados -->
+    <section id="section4" class="games">
+        <h2>Juegos Destacados</h2>
+        <div class="games-container">
+            
+            <!-- 🔹 Tarjeta de juego 1 -->
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/MarioKart8DeluxeLogo.png" alt="Mario Kart 8 Deluxe">
+                <h3>Mario Kart 8 Deluxe</h3>
+                <p class="price">$59.99</p>
+                <button class="buy-btn">Comprar</button>
+            </div>
+
+            <!-- 🔹 Tarjeta de juego 2 -->
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/The_Legend_of_Zelda_Tears_of_the_Kingdom.svg" alt="Zelda Tears of the Kingdom">
+                <h3>The Legend of Zelda: Tears of the Kingdom</h3>
+                <p class="price">$69.99</p>
+                <button class="buy-btn">Comprar</button>
+            </div>
+
+            <!-- 🔹 Tarjeta de juego 3 -->
+            <div class="game-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Super_Smash_Bros._Ultimate_logo.svg/2560px-Super_Smash_Bros._Ultimate_logo.svg.png">
+                <h3>Super Smash Bros. Ultimate</h3>
+                <p class="price">$59.99</p>
+                <button class="buy-btn">Comprar</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer opcional -->
+    <footer>
+        <p>&copy; 2025 Aventura Épica. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

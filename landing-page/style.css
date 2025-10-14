@@ -1,0 +1,276 @@
+/* =====================================
+   Reset básico para todos los elementos
+===================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =====================================
+   Header y navegación fija en top
+===================================== */
+#header {
+    display: flex; /* Usamos Flexbox */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #e60012; /* Color rojo Nintendo */
+    color: #fff;
+    position: fixed; /* Barra siempre visible */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+#header-img {
+    max-height: 50px;
+}
+
+#nav-bar {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ffd700; /* Amarillo para efecto hover */
+}
+
+/* =====================================
+   Sección Hero (presentación)
+===================================== */
+.hero {
+    background: linear-gradient(135deg, #ff4d4d, #ff9999); /* Gradiente rojo */
+    color: white;
+    text-align: center;
+    padding: 150px 20px 100px; /* Padding extra para compensar header fijo */
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #ffd700;
+    color: #e60012;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* =====================================
+   Sección Video
+===================================== */
+#section2 {
+    padding: 120px 20px 80px; /* Padding para header fijo */
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+#video {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* =====================================
+   Sección Juegos Destacados
+===================================== */
+.games {
+    padding: 120px 20px 80px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.games h2 {
+    font-size: 2rem;
+    color: #e60012;
+    margin-bottom: 40px;
+}
+
+/* Contenedor principal con Flexbox */
+.games-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Para que se acomoden en pantallas pequeñas */
+}
+
+/* Tarjeta individual del juego */
+.game-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    width: 250px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+.game-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.game-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e60012;
+    margin-bottom: 15px;
+}
+
+/* Botón de compra */
+.buy-btn {
+    background-color: #e60012;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.buy-btn:hover {
+    background-color: #ff4d4d;
+    transform: scale(1.05);
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .games-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-card {
+        width: 80%;
+    }
+}
+
+/* =====================================
+   Sección Formulario (actualizada y centrada)
+===================================== */
+#section3 {
+    padding: 120px 20px 80px;
+    background: linear-gradient(135deg, #ffb3b3, #fff0f0); /* fondo suave con tonos Nintendo */
+    display: flex;                /* centramos todo el contenido */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#section3 h2 {
+    font-size: 2rem;
+    color: #e60012;
+    margin-bottom: 30px;
+}
+
+/* Contenedor del formulario */
+#form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 90%;
+    max-width: 400px;
+}
+
+/* Estilo de los inputs */
+#email {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto al hacer foco en el input */
+#email:focus {
+    border-color: #e60012;
+    outline: none;
+    box-shadow: 0 0 8px rgba(230, 0, 18, 0.3);
+}
+
+/* Botón de envío */
+#submit {
+    background-color: #e60012;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+#submit:hover {
+    background-color: #ff4d4d;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    #header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #nav-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+}
