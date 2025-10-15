@@ -31,10 +31,11 @@
     top: 0;
     left: 0;
     width: 100vw;
-    background: rgbargba(248, 243, 243, 0.15);
+    /*background: rgba(248, 243, 243, 0.15);*/
     backdrop-filter: blur(8px);
     box-shadow: 0 2px 12px rgba(61,0,102,0.08);
     z-index: 1000;
+    background: rgba(30, 50, 70, 0.85);
 }
 .navbar ul {
     display: flex;
@@ -79,6 +80,91 @@
 .navbar a:hover::before {
   transform: scaleY(1);
 }
+
+
+
+/* Botón hamburguesa estilo simple */
+.navbar-hamburger {
+    display: none; /* oculto por defecto */
+    cursor: pointer;
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
+}
+
+.navbar-hamburger button{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.navbar-hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #EADBC8;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+
+/* Transformación en X cuando está activo */
+#menu-btn.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 8.45px);
+}
+
+#menu-btn.open span:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-btn.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -8.45px);
+}
+
+
+
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar .navbar-links {
+        display: none; /* ahora funcionará sin !important */
+    }
+    .navbar-links {
+        display: none; /* ocultamos los links por defecto */
+        flex-direction: column;
+        width: 100%;
+        background: rgba(30, 50, 70, 0.85);
+        backdrop-filter: blur(8px);
+        position: absolute;
+        top: 60px; /* debajo de la navbar */
+        left: 0;
+        text-align: center;
+        padding: 1rem 0;
+        box-shadow: 0 2px 12px rgba(61,0,102,0.08);
+    }
+    .navbar-links li {
+        margin: 1rem 0;
+    }
+
+    .navbar-hamburger {
+        display: block; /* mostrar el botón en móvil */
+    }
+  
+}
+
+/* Cuando el menú está activo */
+.navbar-links.active {
+    display: flex ;
+}
+
+
+
 
 /*
   a::before {
@@ -208,11 +294,28 @@ section{
     color: #CCCCCC;
 }
 
+@media (max-width: 600px) {
+    .intro p{
+        left: 0;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+}
+
+.section-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #1C3342;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 70px;
+}
 
 .section-container{
     background: #EADBC8;
-  color: #1C3342;
-  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.2);
+    color: #1C3342;
+    box-shadow: 0 -40px 60px rgba(0, 0, 0, 0.5);
 }
 
 .container {
@@ -388,9 +491,17 @@ section{
     font-size: 1.1rem;
     font-weight: bold;
     color: #EADBC8;
+    
 }
 
-.contact-cards .contact-card a {
+.contact-cards .contact-card .texto-card{
+    margin-top: 0.3rem;
+    color: #EADBC8;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.contact-cards  a {
     margin-top: 0.3rem;
     color: #EADBC8;
     text-decoration: none;
@@ -513,7 +624,7 @@ section{
         width: 100%;
         max-width: 320px;
     }
-    .contacto h2 {
+    .contacto h2, .section-container h2{
         font-size: 1.5rem;
     }
 }
