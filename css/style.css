@@ -215,7 +215,7 @@ section{
 }
 
 .section-intro{
-        background: url('../images-principal/fondo-intro-azul.png') center center/cover no-repeat;   
+        background: url('../images-principal/fondo-intro-azul.png') center center/cover no-repeat;  
 }
 
 
@@ -278,6 +278,14 @@ section{
     }
     .intro p{
         transform: translateX(0%);
+    }
+}
+
+@media (max-height: 500px) {
+    .intro p {
+        position: relative !important;
+        padding-top: 20px !important;
+        margin-top: 50px !important;
     }
 }
 
