@@ -368,7 +368,6 @@ section{
     text-align: center;
     text-decoration: none;
     color: #EADBC8;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -388,10 +387,7 @@ section{
   aspect-ratio: 16 / 9;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.9);
-}
+/* Este estilo se moverá a la sección de hover effects más abajo */
 
 .card h3 {
     margin: 16px 0 8px 0;
@@ -475,19 +471,17 @@ section{
     font-size: 1rem;
     
     /* Transición suave para todos los efectos */
-    /* Reemplazamos 'background' por 'background-position' */
-    transition: box-shadow 0.2s, border-color 0.2s, background-position 0.2s, transform 0.2s; 
+    transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-position 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
+.contact-cards a:hover .contact-card,
 .contact-cards .contact-card:hover {
-    /* Mueve la posición del fondo para revelar el degradado */
-    background-position: 100% 0%;
-    
     /* Efectos visuales de hover */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    border-color: #D4AF37; 
-    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.6) !important;
+    border-color: #D4AF37 !important; 
+    transform: translateY(-8px) scale(1.05) !important;
     cursor: pointer;
+    background-position: 100% 0%;
 }
 .contact-cards .contact-card span {
     font-size: 2.2rem;
@@ -510,11 +504,13 @@ section{
     font-size: 0.85rem;
 }
 
-.contact-cards  a {
+.contact-cards a {
     margin-top: 0.3rem;
     color: #EADBC8;
     text-decoration: none;
     font-size: 0.85rem;
+    display: block;
+    transform: none;
 }
 
 .contact-cards .contact-card .contact-icon{
@@ -629,15 +625,250 @@ section{
         flex-direction: column;
         gap: 1rem;
     }
-    .contact-cards .card {
-        width: 100%;
-        max-width: 320px;
-    }
+    /* Selector problemático eliminado - las contact cards no tienen clase 'card' */
     .contacto h2, .section-container h2{
         font-size: 1.5rem;
     }
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Estilos para el formulario mejorado */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(5px);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #4f46e5;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+}
+
+.contact-form input.error,
+.contact-form textarea.error {
+    border-color: #ef4444;
+    animation: shake 0.5s ease-in-out;
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.error-message:not(:empty) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.submit-form {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-form:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+}
+
+.submit-form:active {
+    transform: translateY(-1px);
+}
+
+.submit-form:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.form-message {
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 1rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-message.success {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.form-message.error {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.form-message:not(:empty) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animaciones */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Aplicar animaciones a elementos */
+.intro {
+    animation: fadeInUp 1s ease-out;
+}
+
+.card {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+
+.contact-cards .contact-card {
+    animation: slideInFromLeft 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.contact-cards .contact-card:nth-child(1) { animation-delay: 0.1s; }
+.contact-cards .contact-card:nth-child(2) { animation-delay: 0.2s; }
+.contact-cards .contact-card:nth-child(3) { animation-delay: 0.3s; }
+
+.contact-form {
+    animation: slideInFromRight 1s ease-out;
+}
+
+
+
+/* Hover effects mejorados para cards del container */
+.container a.card {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.container a:hover.card,
+.container .card:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.6) !important;
+}
+
+/* Los enlaces del container heredan las transiciones de .card */
+
+/* Estilo duplicado eliminado - se usa el de arriba */
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Efectos de parallax sutil */
+.section-intro {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Responsive para el formulario */
+@media (max-width: 600px) {
+    .contact-form {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+        padding: 0.875rem;
+        font-size: 0.95rem;
+    }
+    
+    .submit-form {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Estilos consolidados - Tailwind no necesario para este proyecto */

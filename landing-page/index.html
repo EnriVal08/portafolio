@@ -12,7 +12,9 @@
         <!-- Logo del juego -->
         <img id="header-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Nintendo_Switch_Logo.svg/500px-Nintendo_Switch_Logo.svg.png" 
  alt="Logo Juego">
-        
+        <!-- Botón menú (móvil) -->
+        <button id="nav-toggle" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
         <!-- Barra de navegación -->
         <nav id="nav-bar">
             <a class="nav-link" href="#section1">Inicio</a>
@@ -79,5 +81,17 @@
     <footer>
         <p>&copy; 2025 Aventura Épica. Todos los derechos reservados.</p>
     </footer>
+    <script>
+        (function() {
+            var toggle = document.getElementById('nav-toggle');
+            var nav = document.getElementById('nav-bar');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function () {
+                    var isOpen = nav.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

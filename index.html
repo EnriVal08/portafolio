@@ -3,10 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio personal de Enrique Valverde - Desarrollador Web Frontend. Proyectos de HTML, CSS, JavaScript y diseño responsivo.">
+    <meta name="keywords" content="desarrollador web, frontend, HTML, CSS, JavaScript, portafolio, diseño responsivo">
+    <meta name="author" content="Enrique Valverde">
     
-    <link rel="stylesheet" href="./css/output.css">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://enrival08.github.io/portafolio/">
+    <meta property="og:title" content="Mi Portafolio de Desarrollo Web - Enrique Valverde">
+    <meta property="og:description" content="Portafolio personal mostrando proyectos de desarrollo web y mi evolución como programador.">
+    <meta property="og:image" content="https://enrival08.github.io/portafolio/images-principal/miniatura-landing.PNG">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://enrival08.github.io/portafolio/">
+    <meta property="twitter:title" content="Mi Portafolio de Desarrollo Web - Enrique Valverde">
+    <meta property="twitter:description" content="Portafolio personal mostrando proyectos de desarrollo web y mi evolución como programador.">
+    <meta property="twitter:image" content="https://enrival08.github.io/portafolio/images-principal/miniatura-landing.PNG">
+    
     <link rel="stylesheet" href="./css/style.css">
-    <title>My Journey Learning to Code</title>
+    <title>Mi Portafolio de Desarrollo Web - Enrique Valverde</title>
   
 </head>
 <body>
@@ -98,13 +114,26 @@
                 </div>
             </a>
         </div>
-        <form>
-            <input type="text" name="nombre" placeholder="Nombre" required>
-            <input type="email" name="email" placeholder="Email" required>
-            <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+        <form id="contact-form" class="contact-form">
+            <div class="form-group">
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                <span class="error-message" id="nombre-error"></span>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <span class="error-message" id="email-error"></span>
+            </div>
+            <div class="form-group">
+                <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje" required></textarea>
+                <span class="error-message" id="mensaje-error"></span>
+            </div>
             <!-- Honeypot anti-spam -->
             <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
-            <button type="submit" class="submit-form">Enviar</button>
+            <button type="submit" class="submit-form" id="submit-btn">
+                <span class="btn-text">Enviar</span>
+                <span class="btn-loader" style="display: none;">Enviando...</span>
+            </button>
+            <div id="form-message" class="form-message"></div>
         </form>
         </div>
         
@@ -118,16 +147,141 @@
     </script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+    // Menú hamburguesa
     const btn = document.getElementById('menu-btn');
     const links = document.querySelector('.navbar-links');
 
     btn.addEventListener('click', () => {
         links.classList.toggle('active');
-        btn.classList.toggle('open'); // activa la animación de la X
-
+        btn.classList.toggle('open');
     });
 
-  
+    // Formulario de contacto
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.querySelector('.btn-text');
+    const btnLoader = document.querySelector('.btn-loader');
+    const formMessage = document.getElementById('form-message');
+
+    // Validación en tiempo real
+    const nombreInput = document.getElementById('nombre');
+    const emailInput = document.getElementById('email');
+    const mensajeInput = document.getElementById('mensaje');
+
+    function validateField(field, errorId, validator) {
+        const errorElement = document.getElementById(errorId);
+        const isValid = validator(field.value);
+        
+        if (!isValid && field.value.length > 0) {
+            field.classList.add('error');
+            errorElement.textContent = getErrorMessage(field.id);
+        } else {
+            field.classList.remove('error');
+            errorElement.textContent = '';
+        }
+        
+        return isValid;
+    }
+
+    function getErrorMessage(fieldId) {
+        const messages = {
+            'nombre': 'El nombre debe tener al menos 2 caracteres',
+            'email': 'Ingresa un email válido',
+            'mensaje': 'El mensaje debe tener al menos 10 caracteres'
+        };
+        return messages[fieldId] || 'Campo inválido';
+    }
+
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function validateName(name) {
+        return name.trim().length >= 2;
+    }
+
+    function validateMessage(message) {
+        return message.trim().length >= 10;
+    }
+
+    // Event listeners para validación en tiempo real
+    nombreInput.addEventListener('blur', () => {
+        validateField(nombreInput, 'nombre-error', validateName);
+    });
+
+    emailInput.addEventListener('blur', () => {
+        validateField(emailInput, 'email-error', validateEmail);
+    });
+
+    mensajeInput.addEventListener('blur', () => {
+        validateField(mensajeInput, 'mensaje-error', validateMessage);
+    });
+
+    // Limpiar errores al escribir
+    [nombreInput, emailInput, mensajeInput].forEach(input => {
+        input.addEventListener('input', () => {
+            input.classList.remove('error');
+            document.getElementById(input.id + '-error').textContent = '';
+        });
+    });
+
+    // Envío del formulario
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Validar todos los campos
+        const isNombreValid = validateField(nombreInput, 'nombre-error', validateName);
+        const isEmailValid = validateField(emailInput, 'email-error', validateEmail);
+        const isMensajeValid = validateField(mensajeInput, 'mensaje-error', validateMessage);
+
+        if (!isNombreValid || !isEmailValid || !isMensajeValid) {
+            formMessage.textContent = 'Por favor, corrige los errores antes de enviar';
+            formMessage.className = 'form-message error';
+            return;
+        }
+
+        // Mostrar estado de carga
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnLoader.style.display = 'inline';
+        formMessage.textContent = '';
+        formMessage.className = 'form-message';
+
+        try {
+            // Simular envío (aquí puedes integrar con Formspree, EmailJS, etc.)
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            // Mensaje de éxito
+            formMessage.textContent = '¡Mensaje enviado con éxito! Te responderé pronto.';
+            formMessage.className = 'form-message success';
+            contactForm.reset();
+            
+        } catch (error) {
+            // Mensaje de error
+            formMessage.textContent = 'Error al enviar el mensaje. Inténtalo de nuevo.';
+            formMessage.className = 'form-message error';
+        } finally {
+            // Restaurar botón
+            submitBtn.disabled = false;
+            btnText.style.display = 'inline';
+            btnLoader.style.display = 'none';
+        }
+    });
+
+    // Scroll suave para navegación
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
 });
 </script>
 </body>
